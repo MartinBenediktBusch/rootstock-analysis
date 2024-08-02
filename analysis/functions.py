@@ -60,3 +60,18 @@ def save_df_to_csv(df, filename):
     df.to_csv(file_path, index=False)
 
     return f"Data saved here: {file_path}"
+
+def load_csv_to_dataframe(file_name):
+    """
+    Load a CSV file from the 'data' folder into a pandas DataFrame.
+    :param: file_name (str): The name of the CSV file to load (including extension).
+    """
+    file_path = os.path.join('data', file_name)
+    
+    try:
+        df = pd.read_csv(file_path)
+        print(f"DataFrame loaded successfully with {df.shape[0]} rows and {df.shape[1]} columns.")
+        return df
+    except Exception as e:
+        print(f"An error occurred while loading the CSV file: {e}")
+        return None
